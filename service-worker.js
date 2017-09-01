@@ -1,5 +1,5 @@
 var cacheName = 'weatherPWA-step-6-1';
-var mainefestCache = 'manifest';
+var manifestCache = 'manifest';
 var filesToCache = [
     '/',
     '/index.html',
@@ -29,7 +29,7 @@ self.addEventListener('activate', function (e) {
     e.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
-                if (key !== cacheName && key !== mainefestCache) {
+                if (key !== cacheName && key !== manifestCache) {
                     return caches.delete(key);
                 }
             }));
@@ -40,9 +40,9 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
     console.log('[Service Worker] Fetch', e.request.url);
-    if (e.request.url.indexOf('mainfest.json') > -1) {
+    if (e.request.url.indexOf('manifest.json') > -1) {
         e.respondWith(
-            caches.open(mainefestCache).then(function (cache) {
+            caches.open(manifestCache).then(function (cache) {
                 return fetch(e.request).then(function (response) {
                     cache.put(e.request.url, response.clone());
                     return response;
