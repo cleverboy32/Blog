@@ -1,18 +1,18 @@
 var cacheName = 'weatherPWA-step-6-1';
 var manifestCache = 'manifest';
 var filesToCache = [
-    '/',
-    '/index.html',
-    '/scripts/app.js',
-    '/static/img/lion.a2175aa.jpeg',
-    '/static/css/app.fd2accbaadc35ee245741a7c7b7503c7.css',
-    '/static/css/app.fd2accbaadc35ee245741a7c7b7503c7.css.map',
-    '/static/js/manifest.de7511c80ffd9e93b289.js',
-    '/static/js/vendor.fd1e11be2ac7834ed577.js',
-    '/static/js/app.e1fafb0ba261ff16cad4.js',
-    '/static/js/manifest.de7511c80ffd9e93b289.js.map',
-    '/static/js/vendor.fd1e11be2ac7834ed577.js.map',
-    '/static/js/app.e1fafb0ba261ff16cad4.js.map'
+    '/cleverboyBlog',
+    '/cleverboyBlog/index.html',
+    '/cleverboyBlog/scripts/app.js',
+    '/cleverboyBlog/static/img/lion.a2175aa.jpeg',
+    '/cleverboyBlog/static/css/app.fd2accbaadc35ee245741a7c7b7503c7.css',
+    '/cleverboyBlog/static/css/app.fd2accbaadc35ee245741a7c7b7503c7.css.map',
+    '/cleverboyBlog/static/js/manifest.de7511c80ffd9e93b289.js',
+    '/cleverboyBlog/static/js/vendor.fd1e11be2ac7834ed577.js',
+    '/cleverboyBlog/static/js/app.e1fafb0ba261ff16cad4.js',
+    '/cleverboyBlog/static/js/manifest.de7511c80ffd9e93b289.js.map',
+    '/cleverboyBlog/static/js/vendor.fd1e11be2ac7834ed577.js.map',
+    '/cleverboyBlog/static/js/app.e1fafb0ba261ff16cad4.js.map'
 ];
 
 self.addEventListener('install', function (e) {
