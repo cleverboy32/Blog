@@ -40,11 +40,12 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
     console.log('[Service Worker] Fetch', e.request.url);
+    var dataUrl = 'https://cleverboy32.github.io/cleverboyBlog/manifest.json';
     if (e.request.url.indexOf('manifest.json') > -1) {
         e.respondWith(
             caches.open(manifestCache).then(function (cache) {
                 return fetch(e.request).then(function (response) {
-                    cache.put(e.request.url, response.clone());
+                    cache.put(dataUrl, response.clone());
                     return response;
                 });
             })
