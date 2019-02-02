@@ -6,7 +6,7 @@
         </div>
         <div ref="nav" class="nav">
             <span>blog</span>
-            <span>github</span>
+            <span><a href="https://github.com/cleverboy32">github</a></span>
             <span>pay</span>
         </div>
     </div>
@@ -66,6 +66,10 @@ export default {
         text-align: center;
         position: absolute;
         box-shadow: 1px 1px 10px 0px #FED76F;
+
+        a {
+            color: inherit;
+        }
     }
     
     .nav span:nth-child(1) {

@@ -1,7 +1,9 @@
+var markdown = require('./markdown-util');
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+
 
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
@@ -27,6 +29,11 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.md$/,
+                loader: 'vue-markdown-loader',
+                options: markdown
+            },
             {
                 test: /\.(js|vue)$/,
                 loader: 'eslint-loader',

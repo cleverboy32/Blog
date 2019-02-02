@@ -1,0 +1,10 @@
+[{
+        "name": "我的笔记",
+        "path": "/passage",
+        "children": [
+            {
+                "name": "了解 bem",
+                "path": "bem"
+            }
+        ]
+}]
