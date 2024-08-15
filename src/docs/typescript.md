@@ -1,22 +1,49 @@
 ## learn typescript
 ### 类型
-基本类型: string number bool 
+基本类型: 
+```
+string number bool 
+```
 
-数组 `[]`:  string[]  number[]
+数组 `[]`:  
+```
+string[]  number[]
+```
 
-元祖:  [string, number]. 数组中有不同的数据类型
+元祖:  
+```
+[string, number]. 数组中有不同的数据类型
+```
 
-对象: { name: string; age: number }
+对象:
+```
+{ name: string; age: number }
+```
 
-函数：(arg1: string, arg?: bool) => void
+函数：
+```
+(arg1: string, arg?: bool) => void
+```
 
-Symbol:  let symbol = Symbol("key"); 
+Symbol:  
+```
+let symbol = Symbol("key"); 
+```
 
-空： undefined   null
+空：
+```
+undefined   null
+```
 
-任何类型： any
+任何类型： 
+```
+any
+```
 
-不存在的值： never
+不存在的值： 
+```
+never
+```
 
 ### 如何定义类型
 `type`  定义类型变量

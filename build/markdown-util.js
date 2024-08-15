@@ -14,6 +14,8 @@ var markdown = require('markdown-it')({
     }
 });
 
+markdown.wrapper = 'div'
+
 markdown.use(require('markdown-it-anchor'))
 
 module.exports = markdown;

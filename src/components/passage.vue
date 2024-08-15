@@ -81,6 +81,7 @@ export default {
             text-align: left;
             line-height: 28px;
             list-style: none;
+            cursor: pointer;
         }
     }
 
@@ -88,8 +89,9 @@ export default {
         flex: 1;
         height: 100%;
         text-align: justify;
-        padding: 20px 16px;
+        padding: 0 16px;
         line-height: 24px;
+        margin-top: -20px;
 
         h1, h2, h3, h4, h5, h6 {
             margin: 16px 0px;
