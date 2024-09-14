@@ -1,0 +1,165 @@
+.lion {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    background: #fffde6;
+    -webkit-perspective: 300;
+
+    text-align: center;
+
+    .lions {
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 400px;
+        height: 400px;
+        border-radius: 10px;
+    }
+
+    .lion-eye,
+    span {
+        display: inline-block;
+        position: absolute;
+    }
+    .lion-head > span {
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        z-index: 1;
+        -webkit-animation: changeColor0 10s infinite ease-in-out;
+        @keyframes changeColor0 {
+            0% {
+                background: #e88c30;
+            }
+            25% {
+                background: #e8b730;
+            }
+            50% {
+                background: #ee6d66;
+            }
+            100% {
+                background: #ee8f66;
+            }
+        }
+    }
+    .lion-eye {
+        top: 100px;
+        width: 20px;
+        height: 2px;
+        border-radius: 5px;
+        background: #000;
+    }
+    .lion-eye.left {
+        left: 175px;
+        -webkit-transform: rotateZ(-5deg);
+    }
+    .lion-eye.right {
+        left: 210px;
+        -webkit-transform: rotateZ(5deg);
+    }
+    .lion-mouse {
+        position: absolute;
+        width: 25px;
+        left: 190px;
+        top: 125px;
+        border-radius: 5px;
+        border-bottom: 2px solid #000;
+        -webkit-transform: skew(40deg);
+    }
+    .lion-body > span {
+        width: 12px;
+        height: 12px;
+        border-radius: 5px;
+        background: #f4dc9c;
+        -webkit-animation: changeColor1 10s infinite ease-in-out;
+        @keyframes changeColor1 {
+            0% {
+                background: #faefd1;
+            }
+            25% {
+                background: #fae6d1;
+            }
+            50% {
+                background: #fad3d1;
+            }
+            100% {
+                background: #faddd1;
+            }
+        }
+    }
+    .lion-foot > span {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        background: #f4c89c;
+        -webkit-animation: changeColor2 10s infinite ease-in-out;
+        @keyframes changeColor2 {
+            0% {
+                background: #f4c89c;
+            }
+            25% {
+                background: #f4dc9c;
+            }
+            50% {
+                background: #f4a09c;
+            }
+            100% {
+                background: #f4b69c;
+            }
+        }
+    }
+    .lion-tail > span {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        background: #eeaa66;
+        -webkit-animation: changeColor3 10s infinite ease-in-out;
+        @keyframes changeColor3 {
+            0% {
+                background: #eeaa66;
+            }
+            25% {
+                background: #eeca66;
+            }
+            50% {
+                background: #e83a30;
+            }
+            100% {
+                background: #e86830;
+            }
+        }
+    }
+    .text {
+        margin: 50px 0px 70px;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+        p {
+            font-size: 30px;
+            text-shadow: 10px 30px 5px #faefd1;
+            color: #8c5d2c;
+            position: absolute;
+            font-weight: 800;
+        }
+    }
+    .door {
+        display: inline-block;
+        margin-left: 20px;
+        margin-top: 20px;
+        border-radius: 4px;
+        background: #8c5d2c;
+        padding: 1px 25px;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    .door:hover {
+        -webkit-transform: rotateX(1deg) scale(1.2);
+        box-shadow: 0px 0px 100px 5px #f9ece0;
+    }
+}

@@ -75,12 +75,7 @@ const config: Configuration = merge(baseConfig, {
     },
     plugins: [ 
         new VueLoaderPlugin()
-    ],
-    devServer: {
-        historyApiFallback: {
-            index: '/index.html' 
-        }
-    }
+    ]
 });
 
 export default config;
