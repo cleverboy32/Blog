@@ -13,7 +13,8 @@ export default ts_eslint.config(
     prettierConfig,
     {
         "rules": {
-            "@typescript-eslint/no-explicit-any": "error"
+            "@typescript-eslint/no-explicit-any": "error",
+            "vue/multi-word-component-names": "off"
         }
     },
     {
@@ -23,7 +24,7 @@ export default ts_eslint.config(
         languageOptions: {
           parserOptions: {
             parser: ts_eslint.parser,
-            project: ['tsconfig.json'],
+            project: ['./tsconfig.json'],
             extraFileExtensions: ['.vue'],
             sourceType: 'module',
           },
@@ -32,6 +33,8 @@ export default ts_eslint.config(
           "@typescript-eslint/no-explicit-any": ["off"]
         }
     },
-    
+    {
+      ignores: ["wyzCodeTest"]
+    }
     
 );

@@ -12,8 +12,8 @@
     "isolatedModules": true,
     "paths": {
       "pages/*": ["./src/pages/*"],
-      "blogs/*": ["../blogs/*"],
-      "assets/*": ["../public/assets/*"],
+      "blogs/*": ["../../blogs/*"],
+      "assets/*": ["../../public/assets/*"],
       "components/*": ["./src/components/*"]
     },
   },

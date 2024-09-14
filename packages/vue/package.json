@@ -6,7 +6,7 @@
     "private": true,
     "scripts": {
         "type-check": "tsc -p tsconfig.json --noEmit",
-        "lint": "eslint --ext .js,.vue src",
+        "lint": "npx eslint .",
         "build": "NODE_ENV=production webpack --config config/webpack.config.ts",
         "start": "NODE_ENV=development webpack serve --config config/webpack.config.ts --open",
         "scss": "sass --whatch scss -o css"

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
+    "lint": "npx eslint .",
     "format": "prettier --write .",
     "build": "NODE_ENV=production webpack --config config/webpack.config.ts",
     "start": "NODE_ENV=development webpack serve --config config/webpack.config.ts --open"

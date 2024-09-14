@@ -1,5 +1,5 @@
 import markdown from './markdown-util';
-import baseConfig from '../../infra/webpack-config/base.config';
+import baseConfig from '../../../infra/webpack-config/base.config';
 import merge from 'webpack-merge';
 import type { Configuration } from 'webpack';
 import path from 'path';
@@ -7,11 +7,12 @@ import { VueLoaderPlugin } from 'vue-loader';
 
 
 const config: Configuration = merge(baseConfig, {
+    mode: process.env.NODE_ENV as Configuration['mode'],
     entry: {
         app: path.resolve(__dirname, '../src/pages/main.ts')
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '../dist'),
     },
     resolve: {
         alias: {
@@ -72,6 +73,9 @@ const config: Configuration = merge(baseConfig, {
                 }
             }
         ]
+    },
+    devServer: {
+        port: '8081',
     },
     plugins: [ 
         new VueLoaderPlugin()

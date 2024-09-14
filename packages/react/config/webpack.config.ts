@@ -2,10 +2,11 @@ import path from 'path';
 import { Configuration } from 'webpack';
 import 'webpack-dev-server';
 
-import baseConfig from '../../infra/webpack-config/base.config';
+import baseConfig from '../../../infra/webpack-config/base.config';
 import merge from 'webpack-merge';
 
 const config: Configuration = merge(baseConfig, {
+    mode: process.env.NODE_ENV as Configuration['mode'],
     entry: 'pages/app.tsx',
     resolve: {
         alias: {
@@ -13,6 +14,9 @@ const config: Configuration = merge(baseConfig, {
             pages: path.resolve(__dirname, '../src/pages/'),
             utils: path.resolve(__dirname, '../src/utils/'),
         },
+    },
+    output: {
+        path: path.resolve(__dirname, '../dist'),
     },
     module: {
         rules: [

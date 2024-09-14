@@ -101,45 +101,43 @@ const Home = () => {
     }, []);
 
     return (
-        <>
-            <div ref={containerRef} className="lion">
-                <Mouth />
-                <div ref={textRef} className="text">
-                    {text.map((value, index) => (
-                        <p key={index}>{value}</p>
+        <div ref={containerRef} className="lion">
+            <Mouth />
+            <div ref={textRef} className="text">
+                {text.map((value, index) => (
+                    <p key={index}>{value}</p>
+                ))}
+            </div>
+            <div ref={loinRef} className="lions">
+                <div className="lion-head">
+                    <div className="lion-eye left" />
+                    <div className="lion-eye right" />
+                    <div className="lion-mouse" />
+
+                    {head.map((_, index) => (
+                        <span key={index} />
                     ))}
                 </div>
-                <div ref={loinRef} className="lions">
-                    <div className="lion-head">
-                        <div className="lion-eye left" />
-                        <div className="lion-eye right" />
-                        <div className="lion-mouse" />
-
-                        {head.map((_, index) => (
-                            <span key={index} />
-                        ))}
-                    </div>
-                    <div className="lion-body">
-                        {body.map((_, index) => (
-                            <span key={index} />
-                        ))}
-                    </div>
-                    <div className="lion-foot">
-                        {foot.map((_, index) => (
-                            <span key={index} />
-                        ))}
-                    </div>
-                    <div className="lion-tail">
-                        {tail.map((_, index) => (
-                            <span key={index} />
-                        ))}
-                    </div>
+                <div className="lion-body">
+                    {body.map((_, index) => (
+                        <span key={index} />
+                    ))}
                 </div>
-                <Link className="door" to="/passage">
-                    enter
-                </Link>
+                <div className="lion-foot">
+                    {foot.map((_, index) => (
+                        <span key={index} />
+                    ))}
+                </div>
+                <div className="lion-tail">
+                    {tail.map((_, index) => (
+                        <span key={index} />
+                    ))}
+                </div>
             </div>
-        </>
+            <Link className="door" to="/passage">
+                enter
+            </Link>
+        </div>
     );
 };
 

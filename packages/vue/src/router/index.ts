@@ -18,7 +18,7 @@ for (const item of routerMap) {
             children.push({
                 name: child.name,
                 path: child.path,
-                component: import(`blogs/markdown/${child.path}.md`)
+                component: import(/* webpackChunkName: blogs */`blogs/markdown/${child.path}.md`)
             })
         }
 

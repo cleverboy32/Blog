@@ -14,7 +14,7 @@ for (const item of routerMap) {
             children.push({
                 path: child.path,
                 lazy: async () => {
-                    const markdown = await import(`blogs/markdown/${child.path}.md`);
+                    const markdown = await import(/* webpackChunkName: blogs */`blogs/markdown/${child.path}.md`);
                     return {
                         path: child.path,
                         element: <Markdown>{markdown.default}</Markdown>

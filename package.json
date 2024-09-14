@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint . --flag unstable_ts_config",
     "format": "prettier --write .",
-    "lint:fix": "npx eslint . --fix --flag unstable_ts_config"
+    "lint:fix": "npx pnpm -r run lint:fix",
+    "lint": "pnpm -r run lint",
+    "start": "pnpm -r run start",
+    "build": "pnpm -r run build"
   },
   "repository": {
     "type": "git",
@@ -50,5 +52,8 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0",
     "webpack-merge": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
