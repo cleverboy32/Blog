@@ -36,3 +36,7 @@ done
 
 mv $output_dir/* ./
 rm -rf $output_dir
+
+git add .
+git commit -m "feat: update blog"
+git push origin gh-pages
