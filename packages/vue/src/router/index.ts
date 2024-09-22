@@ -15,12 +15,14 @@ for (const item of routerMap) {
 
     if (item.children) {
         for (const child of item.children) {
+            const blog = import(`blogs/markdown/${child.path}.md`);
             children.push({
                 name: child.name,
                 path: child.path,
-                component: import(/* webpackChunkName: blogs */`blogs/markdown/${child.path}.md`)
+                component: () => blog.then((_) => { console.log('loaded done!'); return _})
             })
         }
+
 
         children.push({
             path: '',
@@ -35,5 +37,6 @@ for (const item of routerMap) {
         children: children
     });
 }
+
 
 export default routers;

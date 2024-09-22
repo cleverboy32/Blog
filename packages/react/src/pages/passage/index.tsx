@@ -17,9 +17,9 @@ const Passage = () => {
                             <ul key={index}>
                                 {
                                     item.children.map((blog) => (
-                                        <li className="nav__item__title" key={blog.name}>
+                                        <div className="nav__item__title" key={blog.name}>
                                             <Link to={blog.path} >{blog.name}</Link>
-                                        </li>
+                                        </div>
                                     ))
                                 }
                             </ul>

@@ -1,5 +1,5 @@
 import App from './app.vue';
-import  'normalize.css'
+import  'normalize.css';
 import 'highlight.js/styles/atom-one-light.css';
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router'

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { RouterProvider } from 'react-router-dom';
-import "assets/style/reset.css";
+import 'normalize.css';
 import './app.scss';
 import router from './route';
 
