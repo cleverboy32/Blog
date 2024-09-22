@@ -1,21 +1,21 @@
 # cboy-blog
 
-> A Vue.js project
+> use markdown write your blog (React/Vue)
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-npm install
+pnpm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# you can choose your good at JS tool to write your blog . cd vue or react
+npm run start
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+# after update, into root directory to build resource and push to your github
+npm run push
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+after that. the build resource will push to the branch gh-pages . and you can join your github project path, to get 
+your blog url. (https://$githubName.github.io/$projectName/#/) such as: 
+
+https://cleverboy32.github.io/cleverboyBlog/#/
