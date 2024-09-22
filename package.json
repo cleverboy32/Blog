@@ -9,7 +9,8 @@
     "lint:fix": "npx pnpm -r run lint:fix",
     "lint": "pnpm -r run lint",
     "start": "pnpm -r run start",
-    "build": "pnpm -r run build"
+    "build": "pnpm -r run build",
+    "push": "sh ./post-github.sh"
   },
   "repository": {
     "type": "git",
