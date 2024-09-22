@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/vue/src/router/index.ts", // 替换为您的入口文件
+            "outFiles": ["${workspaceFolder}/vue/dist/**/*.js"], // 输出文件路径
+            "sourceMaps": true // 启用源映射
+        }
+    ]
+}

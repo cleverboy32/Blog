@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "ESNext",
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "moduleResolution":"node",
+    "resolveJsonModule": true,
+    "paths": {
+      "pages/*": ["./src/pages/*"],
+      "blogs/*": ["../../blogs/*"],
+      "assets/*": ["../../public/assets/*"],
+      "components/*": ["./src/components/*"],
+      "utils/*": ["./src/utils/*"],
+    },
+  },
+  "include": ["src/**/*", "config", "types"],
+  "exclude": ["node_modules"],
+  "ts-node": {
+    "compilerOptions": {
+        "module": "CommonJS"
+     }
+  }
+ 
+}
