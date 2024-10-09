@@ -16,6 +16,6 @@ npm run push
 ```
 
 最后，你就可以通过拼接你的博客站点地址了。拼接形式：(https://$githubName.github.io/$projectName/#/) 
-例如我的站点(我的 githuName 是 cleverboy32, projectName 是 cleverboy32) :
-https://cleverboy32.github.io/cleverboy32/#/
+例如我的站点(我的 githuName 是 cleverboy32, projectName 是 Blog) :
+https://cleverboy32.github.io/Blog/#/
 
