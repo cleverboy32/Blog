@@ -1,4 +1,4 @@
-# cboy-blog
+# blog 模板！
 
 > 用 markdown 写你自己的博客啦。 还能用 React/Vue 搞你想写的酷炫东西~
 
