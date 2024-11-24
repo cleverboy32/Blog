@@ -2,7 +2,7 @@
 
 npm run build
 
-
+use_template="react" # set you used template to update
 
 output_dir="./build_file"
 rm -rf $output_dir
@@ -11,9 +11,11 @@ search_dir="./packages/"
 
 for package in `ls $search_dir`; do
     package_dist="$search_dir$package/dist/";
-    cp -r $package_dist $output_dir
-done
 
+    if [ "$package" == "$use_template" ]; then
+        cp -r $package_dist $output_dir
+    fi
+done
 
 
 git stash
