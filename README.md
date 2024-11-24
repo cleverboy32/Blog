@@ -19,3 +19,7 @@ npm run push
 例如我的站点(我的 githuName 是 cleverboy32, projectName 是 Blog) :
 https://cleverboy32.github.io/Blog/#/
 
+
+## play
+
+1. Help transfer md file to pdf ~ can custom page size! 
