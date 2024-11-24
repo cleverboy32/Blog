@@ -56,7 +56,7 @@ const config: Configuration = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../../public/index.html'),
         }),
-    ],
+    ]
 };
 
 export default config;

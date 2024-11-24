@@ -13,6 +13,7 @@ const config: Configuration = merge(baseConfig, {
             components: path.resolve(__dirname, '../src/components/'),
             pages: path.resolve(__dirname, '../src/pages/'),
             utils: path.resolve(__dirname, '../src/utils/'),
+            constant: path.resolve(__dirname, '../src/constant/'),
         },
     },
     output: {
@@ -35,29 +36,30 @@ const config: Configuration = merge(baseConfig, {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', {
+                    loader: 'css-loader',
+                    options: {
+                        modules: {
+                            auto: (resourcePath: string) => (/\.module/).test(resourcePath),
+                            localIdentName: '[local]--[hash:base64:5]',
+                        }
+                    }
+                }],
             },
             {
                 test: /\.scss$/,
-                use: [
-                    'style-loader', // 将样式添加到 DOM
-                    'css-loader', // 解析 CSS
-                    'sass-loader', // 编译 Sass 到 CSS
-                ],
-            },
-            {
-                test: /\.module\.scss$/, // 只对以 .module.scss 结尾的文件启用 CSS Modules
                 use: [
                     'style-loader', // 将样式添加到 DOM
                     {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                localIdentName: '[name]__[local]--[hash:base64:5]', // 命名方式
-                            },
-                        },
+                                auto: (resourcePath: string) => (/\.module/).test(resourcePath),
+                                localIdentName: '[local]--[hash:base64:5]',
+                            }
+                        }
                     },
-                    'sass-loader', // 编译 SCSS 到 CSS
+                    'sass-loader', // 编译 Sass 到 CSS
                 ],
             },
             {
