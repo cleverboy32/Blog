@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import logo from 'assets/lion.jpeg';
 
 import './index.scss';
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -32,7 +33,7 @@ const Header = () => {
             <div ref={navRef} className="nav" onMouseOver={stopAnimate} onMouseOut={playAnimate}>
                 <span>blog</span>
                 <span><a href="https://github.com/cleverboy32">github</a></span>
-                <span>play</span>
+                <span><Link to="/play" >play</Link></span>
             </div>
         </div>
     )

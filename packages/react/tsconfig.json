@@ -16,6 +16,7 @@
       "assets/*": ["../../public/assets/*"],
       "components/*": ["./src/components/*"],
       "utils/*": ["./src/utils/*"],
+      "constant": ["./src/constant"]
     },
   },
   "include": ["src/**/*", "config", "types"],

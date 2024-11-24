@@ -1,0 +1,124 @@
+.page {
+    background: #100101a0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.tool-bar {
+    height: 1;
+    display: grid;
+    grid-gap: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.upload {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.preview {
+    grid-column: 1;
+    grid-row: 2;
+    width: 80px;
+}
+
+.save {
+    grid-column: 1;
+    grid-row: 2;
+    width: 80px;
+    margin-left: 80px;
+}
+
+.size-select {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+}
+
+.size {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: right;
+}
+
+.hr {
+    border: none;
+    border-top: 3px double #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.hr::after {
+    color: #fff;
+    content: '§';
+    font-size: 24px;
+    padding: 0 4px;
+    position: relative;
+    top: -20px;
+}
+
+.preview-container {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    overflow: auto;
+    // position: relative;
+}
+
+.preview-content {
+    background: #fff;
+    color: #1a1a1a;
+    text-align: left;
+    padding: 10px;
+    margin: auto;
+    box-sizing: border-box;
+
+    word-wrap: break-word; /* 适用于旧浏览器 */
+    overflow-wrap: break-word; /* 适用于现代浏览器 */
+    white-space: normal; /* 确保文本可以换行 */
+}
+
+.show-content {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 16px;
+    position: absolute;
+    background: #af8d71;
+    color: #ffffff;
+    right: 10%;
+    font-family: monospace;
+    top: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 0;
+    box-shadow: 0px -4px 8px 4px #ffffff38;
+}
+
+.content-show {
+    display: block;
+    box-sizing: border-box;
+}
+
+.content-hide {
+    display: none;
+    box-sizing: border-box;
+}
+
+.preview-img {
+    color: #1a1a1a;
+    object-fit: cover;
+    height: auto;
+    margin: 20px auto;
+}

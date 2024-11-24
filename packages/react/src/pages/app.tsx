@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { RouterProvider } from 'react-router-dom';
 import 'normalize.css';
+import 'highlight.js/styles/default.css';
 import './app.scss';
 import router from './route';
 

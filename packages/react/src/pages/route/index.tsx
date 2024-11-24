@@ -2,7 +2,8 @@ import React from 'react';
 import routerMap from 'blogs/blog-route.json';
 import Home from 'pages/home';
 import Passage from 'pages/passage';
-import Markdown from 'react-markdown'
+import Markdown from 'react-markdown';
+import Play from 'pages/markdownToPdf';
 
 import { createHashRouter, RouteObject } from 'react-router-dom';
 
@@ -40,4 +41,8 @@ export default createHashRouter([
         element: <Passage />,
         children,
     },
+    {
+        path: '/play',
+        element: <Play />
+    }
 ]);
