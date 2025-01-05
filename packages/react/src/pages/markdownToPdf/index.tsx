@@ -1,42 +1,39 @@
 import { readFile } from 'utils/index'
-import React, { ChangeEventHandler, useEffect, useMemo, useRef, useState } from "react";
-
-import html2pdf from 'html2pdf.js';
+import React, { ChangeEventHandler, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import * as styles from './index.module.scss';
 import { pageSizeInPixels } from 'utils/pdfSize';
-import type { PageSizeTypes } from 'constant';
-import { marked } from 'utils/markdown';
+import { PageSizeTypes, MDTemplateFileList } from 'constant';
+import { marked, mergePdfOption, previewMDPdf, savePdf } from 'utils/markdown';
+import { MdList, MDFile } from 'components/md-list';
+import Modal from 'components/modal';
+import MdEditor from 'components/md-editor';
+
+import '../../styles/md.scss';
 
 const MarkdownToPdf = () => {
 
     const previewRef = useRef<any>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
 
     const [pageSize, setPageSize] = useState<PageSizeTypes>("A4");
-    const [file, setFile] = useState('');
-
     const [customSize, setCustomSize] = useState({ width: 250, height: 353 });
     const [pdfPageSize, setPdfPageSize] = useState({ width: 0, height: 0 });
 
-    const [showContent, setShowContent] = useState(true);
+    const [file, setFile] = useState<Partial<MDFile>>({});
     const [imgUri, setImgUri] = useState('');
+
+    const [showTemplate, setShowTemplate] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
+
+    console.log(file.name)
 
 
     const pdfOption = useMemo(() => {
-         return {
-            margin:       [0, 0],
-            filename:     file.split('.')?.[0] ?? 'file',
-            image:        { type: 'jpeg', quality: 1 },
-            html2canvas:  { scale: window.devicePixelRatio },
-            jsPDF:        { 
-                unit: 'mm',
-                format: pageSize === 'custom' ? 
-                [customSize.width, customSize.height] : pageSize.toLowerCase(),
-                orientation: 'portrait'
-            },
-            pagebreak: { mode: ['css', 'legacy'] }
-        };
+        return mergePdfOption({
+            filename: file.name?.split('.')?.[0],
+            format: pageSize === 'custom' ? 
+            [customSize.width, customSize.height] : pageSize.toLowerCase(),
+        })
     }, [file, pageSize, customSize])
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     useEffect(() => {
@@ -52,8 +49,8 @@ const MarkdownToPdf = () => {
         const content = await readFile(file) as string;
         const html = await marked.parse(content)
 
-        insertToPreview(html);
-        setFile(file?.name ?? 'file')
+        setFile({ name: file?.name ?? '', content, html });
+        previewPdf(html);
     }
 
     const handleCustomSize =  (type: 'width' | 'height') => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,63 +67,67 @@ const MarkdownToPdf = () => {
         }
     }
 
-    const previewPdf = (html: string) => {
-        html2pdf().set(pdfOption).from(html).outputImg('datauristring').then(function(uri: string) {
-            if (previewRef.current) {
-                previewRef.current.onload = () => {
-                    setImgUri(uri);
-                    setShowContent(false);
-                }
-                previewRef.current.src = uri;
+    const previewPdf = async (html: string) => {
+        const uri = await previewMDPdf(html, pdfOption);
+        if (previewRef.current) {
+            previewRef.current.onload = () => {
+                setImgUri(uri);
             }
-        });
-    }
-
-    const saveToPdf = (html: string) => {
-        html2pdf().set(pdfOption).from(html).save();
+            previewRef.current.src = uri;
+        }
     }
 
     const handleSave = () => {
-        saveToPdf(contentRef.current?.outerHTML ?? '')
+        savePdf(file?.html ?? '', pdfOption);
     }
 
-
-    const handlePreview = () => {
-        previewPdf(contentRef.current?.outerHTML ?? '')
+    const handleEdit = () => {
+        setShowEdit(true);
     }
 
-    const handleToggleContent = () => {
-        setShowContent(!showContent);
+    const handleExitEdit = () => {
+        setShowEdit(false);
     }
 
-    const insertToPreview = (domStr: string) => {
-        if (contentRef.current) {
-            contentRef.current.innerHTML = domStr;
-        }
+    const handleCompleteEdit = (file: MDFile) => {
+        setFile(file);
+        previewPdf(file.html);
+        setShowEdit(false);
     }
 
     const handleSizeSelect: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
         setPageSize(event.target.value as PageSizeTypes);
     }
 
+    const toggleTemplate = () => {
+        setShowTemplate(!showTemplate);
+    }
+
+    const handleSelectTemplate = useCallback((file: MDFile) => {
+        setFile(file);
+        previewPdf(file.html);
+        toggleTemplate();
+    }, [file, showTemplate, imgUri])
+
+
+
     return (
         <div className={styles['page']}>
-            <h1>Hello, Get PDF type file!</h1>
+            <h1>Hello, Transfer Markdown to PDF!</h1>
 
             <div className={styles['tool-bar']}>
-                <input 
-                    className={styles['upload']}
-                    type="file"
-                    onChange={handleFileChange} accept='.md,.html'
-                    aria-description='' />
+                
 
-                <button 
-                    onClick={handlePreview}
-                    className={styles['preview']}
-                    style={{ display: file ? 'inline-block' : 'none'}}>
-                    图片预览
-                </button>
-
+                <label className={styles['upload']}>
+                    选择文件
+                    <input
+                        style={{ opacity: '0', width: '0' }}
+                        type="file"
+                        onChange={handleFileChange} accept='.md'
+                        aria-description='' />
+                </label>
+                <span className={styles['use-template']} onClick={toggleTemplate}>使用模板</span>
+                
                 <button 
                     onClick={handleSave}
                     className={styles['save']}
@@ -160,23 +161,33 @@ const MarkdownToPdf = () => {
 
             <div className={styles['preview-container']}>
                 <button 
-                    style={{ display: imgUri ? 'none' : 'none'}}
-                    onClick={handleToggleContent}
+                    style={{ display: file.content ? 'block' : 'none'}}
+                    onClick={handleEdit}
                     className={styles['show-content']}>
-                    { showContent ? '收起HTML' : '展示HTML'}
+                    编辑
                 </button>
                 
-                <div 
-                    className={
-                        `${styles['preview-content']}
-                    `}
-                    ref={contentRef}
-                    style={{ width: `${pdfPageSize.width}px`}}
-                    >
-                </div>
 
                 <img ref={previewRef} className={styles['preview-img']} style={{ width: `${pdfPageSize.width}px`}} />
             </div>
+
+
+            <Modal 
+                visible={showEdit}
+                onClose={() => setShowEdit(false)}
+                closeAble={false}
+                bodyStyle={{ borderRadius: '0px', padding: '0px'}} 
+            >
+                <MdEditor 
+                    file={file}
+                    handleExitEdit={handleExitEdit}
+                    handleCompleteEdit={handleCompleteEdit}>
+                </MdEditor>
+            </Modal>
+
+            <Modal visible={showTemplate} onClose={toggleTemplate} title='简历模板'>
+                <MdList files={MDTemplateFileList} onClick={handleSelectTemplate} />
+            </Modal>
         </div>
     )
 }

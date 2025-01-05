@@ -20,19 +20,34 @@
 .upload {
     grid-column: 1;
     grid-row: 1;
+    background: #fff;
+    border-radius: 4px;
+    width: 80px;
+    color: #010101;
+    cursor: pointer;
 }
 
-.preview {
+.use-template {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     width: 80px;
+    margin-left: 80px;
+    cursor: pointer;
+    color: #ddd;
+}
+
+.open-modal {
+    width: 10px;
 }
 
 .save {
     grid-column: 1;
     grid-row: 2;
     width: 80px;
-    margin-left: 80px;
+    height: 29px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
 }
 
 .size-select {
@@ -73,7 +88,6 @@
     margin-top: 20px;
     flex-direction: column;
     overflow: auto;
-    // position: relative;
 }
 
 .preview-content {
@@ -97,9 +111,9 @@
     position: absolute;
     background: #af8d71;
     color: #ffffff;
-    right: 10%;
+    right: 15%;
     font-family: monospace;
-    top: 20px;
+    top: 200px;
     font-weight: 700;
     cursor: pointer;
     border: 0;

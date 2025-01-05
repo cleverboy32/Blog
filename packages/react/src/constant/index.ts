@@ -22,3 +22,10 @@ export const PageSize = {
 }
 
 export type PageSizeTypes = keyof typeof PageSize;
+
+
+export const MDTemplateFileList = [
+    'resume2.md',
+    'resume3.md',
+    'resume4.md',
+]
