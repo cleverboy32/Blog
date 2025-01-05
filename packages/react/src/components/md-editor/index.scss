@@ -1,0 +1,85 @@
+.md-wrap {
+    background: rgba(16, 1, 1, 0.6274509804);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.md-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+        margin: 12px 0;
+        font-size: 28px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    button {
+        background: #fff;
+        width: 80px;
+        color: #010101;
+        border: none;
+        height: 36px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        margin-left: 12px;
+
+        &:hover {
+            background: #ccc;
+        }
+    }
+}
+
+.md-editor-container {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.md-editor,
+.md-preview {
+    flex: 1;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.md-editor {
+    background: #f2f2f2;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow-y: auto;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    margin-right: 20px;
+}
+
+.md-preview {
+    background: #fff;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+
+    text-align: left;
+    padding: 10px;
+    margin: auto;
+    box-sizing: border-box;
+
+    word-wrap: break-word; /* 适用于旧浏览器 */
+    overflow-wrap: break-word; /* 适用于现代浏览器 */
+    white-space: normal; /* 确保文本可以换行 */
+}
+
+.md-preview {
+}
