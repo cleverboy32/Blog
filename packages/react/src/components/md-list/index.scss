@@ -1,0 +1,53 @@
+/* MdList.css */
+
+.md-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    padding: 40px 80px;
+    margin: 0;
+    overflow-y: scroll;
+    height: 70vh;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.md-list-item {
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 30vw;
+    height: 180vh;
+}
+
+.md-list-item:hover {
+    // transform: scale(1.1);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    transition: transform 0.5s ease-in-out;
+}
+
+.md-list-item-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.md-list-item .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.md-list-item .description {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
