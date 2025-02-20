@@ -2,8 +2,9 @@ import React from 'react';
 import routerMap from 'blogs/blog-route.json';
 import Home from 'pages/home';
 import Passage from 'pages/passage';
-import Markdown from 'react-markdown';
 import Play from 'pages/markdownToPdf';
+import { marked } from 'utils/markdown';
+
 
 import { createHashRouter, RouteObject } from 'react-router-dom';
 
@@ -15,10 +16,11 @@ for (const item of routerMap) {
             children.push({
                 path: child.path,
                 lazy: async () => {
-                    const markdown = await import(`blogs/markdown/${child.path}.md`);
+                    const mdContent = await import(`blogs/markdown/${child.path}.md`).then(res => res.default);
+                    const htmlContent = await marked.parse(mdContent);
                     return {
                         path: child.path,
-                        element: <Markdown>{markdown.default}</Markdown>
+                        element: <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     }
                 },
             });

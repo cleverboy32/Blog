@@ -1,4 +1,4 @@
-import { Marked, RendererObject, Tokens } from 'marked';
+import { Marked, RendererObject, Tokens, Renderer } from 'marked';
 import { markedHighlight } from 'marked-highlight';
 import hljs from 'highlight.js';
 
@@ -17,7 +17,7 @@ const options = markedHighlight({
     },
 });
 
-const renderer = {} as RendererObject;
+const renderer = { ...Renderer } as RendererObject;
 renderer.blockquote = function (text) {
     return `<blockquote class="marked-blockquote">${text}</blockquote>`;
 };
@@ -105,6 +105,8 @@ renderer.text = function (text) {
 renderer.code = (code: Tokens.Code) => {
     return `<pre><code class="hljs" style="word-break: break-word; white-space: pre-line">${code.text}</code></pre>`;
 };
+
+console.log(renderer.strong);
 
 const marked = new Marked(options);
 marked.use({ renderer, ...markedHighlight });

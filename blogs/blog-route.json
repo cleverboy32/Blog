@@ -49,6 +49,10 @@
         {
             "name": "前端代码规范",
             "path": "code-format"
+        },
+        {
+            "name": "相信光-面试",
+            "path": "believe-light"
         }
     ]
 }]
