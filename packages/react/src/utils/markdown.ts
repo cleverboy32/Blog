@@ -16,9 +16,18 @@ const options = markedHighlight({
         return hljs.highlight(code, { language }).value;
     },
 });
+const renderer = { } as RendererObject;
+const extendRenderer = new Renderer();
 
-const renderer = { ...Renderer } as RendererObject;
+console.log(extendRenderer.blockquote);
+
 renderer.blockquote = function (text) {
+
+    if (typeof text !== 'string') {
+        const body = this.parser.parse(text.tokens);
+        return `<blockquote class="marked-blockquote">\n${body}</blockquote>\n`;
+    }
+
     return `<blockquote class="marked-blockquote">${text}</blockquote>`;
 };
 
@@ -49,9 +58,22 @@ renderer.listitem = function ({ text }) {
     return `<li class="marked-listitem">${text}</li>`;
 };
 
-renderer.paragraph = function ({ text }) {
-    return `<p class="marked-paragraph">${text}</p>`;
+// Inline elements
+renderer.strong = function (text) {
+    return `<strong class="marked-strong">${text}</strong>`;
 };
+
+renderer.paragraph = function ({ text, tokens }) {
+    console.log(tokens, text);
+    if (tokens[0].type === 'text') {
+        return `<p class="marked-paragraph">${text}</p>`;
+    }
+
+    else {
+        return `<p class="marked-paragraph"><${tokens[0].type}>${(tokens[0] as any)?.text}</${tokens[0].type}></p>`;
+    }
+};
+
 
 renderer.table = function (this, token) {
     const { header, rows } = token;
@@ -67,10 +89,7 @@ renderer.tablecell = function (this, token) {
     return `<td class="marked-table-cell"${tokens}>${text}</td>`;
 };
 
-// Inline elements
-renderer.strong = function (text) {
-    return `<strong class="marked-strong">${text}</strong>`;
-};
+
 
 renderer.em = function (text) {
     return `<em class="marked-em">${text}</em>`;
@@ -105,8 +124,6 @@ renderer.text = function (text) {
 renderer.code = (code: Tokens.Code) => {
     return `<pre><code class="hljs" style="word-break: break-word; white-space: pre-line">${code.text}</code></pre>`;
 };
-
-console.log(renderer.strong);
 
 const marked = new Marked(options);
 marked.use({ renderer, ...markedHighlight });
