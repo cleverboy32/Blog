@@ -10,6 +10,7 @@ const config: Configuration = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         clean: true,
+        publicPath: 'https://github.com/cleverboy32/Blog/blob/gh-pages/'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json'],
