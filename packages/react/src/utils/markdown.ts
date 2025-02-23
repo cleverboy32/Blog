@@ -31,13 +31,13 @@ renderer.blockquote = function (text) {
     return `<blockquote class="marked-blockquote">${text}</blockquote>`;
 };
 
-renderer.code = function (this, { lang, escaped }: Tokens.Code) {
-    return `<pre><code class="marked-code" lang="${lang}">${escaped}</code></pre>`;
-};
+// renderer.code = function (this, { lang, escaped }: Tokens.Code) {
+//     return `<pre><code class="marked-code" lang="${lang}">${escaped}</code></pre>`;
+// };
 
-renderer.html = function (html) {
-    return `<div class="marked-html">${html}</div>`;
-};
+// renderer.html = function (html) {
+//     return `<div class="marked-html">${html}</div>`;
+// };
 
 renderer.heading = function (this, heading) {
     const { text, depth } = heading;
@@ -54,72 +54,72 @@ renderer.list = function (this, token) {
     return `<${type} class="marked-list" start="${start}">${items.map((item) => this.listitem(item)).join('')}</${type}>`;
 };
 
-renderer.listitem = function ({ text }) {
-    return `<li class="marked-listitem">${text}</li>`;
-};
+// renderer.listitem = function ({ text }) {
+//     return `<li class="marked-listitem">${text}</li>`;
+// };
 
 // Inline elements
-renderer.strong = function (text) {
-    return `<strong class="marked-strong">${text}</strong>`;
-};
+// renderer.strong = function (text) {
+//     return `<strong class="marked-strong">${text}</strong>`;
+// };
 
-renderer.paragraph = function ({ text, tokens }) {
-    console.log(tokens, text);
-    if (tokens[0].type === 'text') {
-        return `<p class="marked-paragraph">${text}</p>`;
-    }
+// renderer.paragraph = function ({ text, tokens }) {
+//     console.log(tokens, text);
+//     if (tokens[0].type === 'text') {
+//         return `<p class="marked-paragraph">${text}</p>`;
+//     }
 
-    else {
-        return `<p class="marked-paragraph"><${tokens[0].type}>${(tokens[0] as any)?.text}</${tokens[0].type}></p>`;
-    }
-};
-
-
-renderer.table = function (this, token) {
-    const { header, rows } = token;
-    return `<table class="marked-table"><thead>${header}</thead><tbody>${rows}</tbody></table>`;
-};
-
-renderer.tablerow = function (content) {
-    return `<tr class="marked-tablerow">${content}</tr>`;
-};
-
-renderer.tablecell = function (this, token) {
-    const { text, tokens } = token;
-    return `<td class="marked-table-cell"${tokens}>${text}</td>`;
-};
+//     else {
+//         return `<p class="marked-paragraph"><${tokens[0].type}>${(tokens[0] as any)?.text}</${tokens[0].type}></p>`;
+//     }
+// };
 
 
+// renderer.table = function (this, token) {
+//     const { header, rows } = token;
+//     return `<table class="marked-table"><thead>${header}</thead><tbody>${rows}</tbody></table>`;
+// };
 
-renderer.em = function (text) {
-    return `<em class="marked-em">${text}</em>`;
-};
+// renderer.tablerow = function (content) {
+//     return `<tr class="marked-tablerow">${content}</tr>`;
+// };
 
-renderer.codespan = function (code) {
-    return `<code class="marked-codespan">${code}</code>`;
-};
+// renderer.tablecell = function (this, token) {
+//     const { text, tokens } = token;
+//     return `<td class="marked-table-cell"${tokens}>${text}</td>`;
+// };
 
-renderer.br = function () {
-    return `<br class="marked-br"/>`;
-};
 
-renderer.del = function (text) {
-    return `<del class="marked-del">${text}</del>`;
-};
 
-renderer.link = function (this, link) {
-    const { href, title, text } = link;
-    return `<a href="${href}" title="${title}">${text}</a>`;
-};
+// renderer.em = function (text) {
+//     return `<em class="marked-em">${text}</em>`;
+// };
 
-renderer.image = function (this, image) {
-    const { href, title, text } = image;
-    return `<img src="${href}" title="${title}" alt="${text}">`;
-};
+// renderer.codespan = function (code) {
+//     return `<code class="marked-codespan">${code}</code>`;
+// };
 
-renderer.text = function (text) {
-    return `<span class="marked-text">${text}</span>`;
-};
+// renderer.br = function () {
+//     return `<br class="marked-br"/>`;
+// };
+
+// renderer.del = function (text) {
+//     return `<del class="marked-del">${text}</del>`;
+// };
+
+// renderer.link = function (this, link) {
+//     const { href, title, text } = link;
+//     return `<a href="${href}" title="${title}">${text}</a>`;
+// };
+
+// renderer.image = function (this, image) {
+//     const { href, title, text } = image;
+//     return `<img src="${href}" title="${title}" alt="${text}">`;
+// };
+
+// renderer.text = function (text) {
+//     return `<span class="marked-text">${text}</span>`;
+// };
 
 renderer.code = (code: Tokens.Code) => {
     return `<pre><code class="hljs" style="word-break: break-word; white-space: pre-line">${code.text}</code></pre>`;
