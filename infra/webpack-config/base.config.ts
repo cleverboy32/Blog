@@ -2,6 +2,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration } from 'webpack';
 import 'webpack-dev-server';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const config: Configuration = {
     mode: (process.env.NODE_ENV || 'development') as Configuration['mode'] ,
@@ -10,10 +11,9 @@ const config: Configuration = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         clean: true,
-        // publicPath: 'https://github.com/cleverboy32/Blog/blob/gh-pages/'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '.jpeg', '.jpg', '.png', '.gif', '.svg'],
         alias: {
           'assets': path.resolve(__dirname, '../../public/assets/'),
           'blogs': path.resolve(__dirname, '../../blogs/'),
@@ -34,8 +34,11 @@ const config: Configuration = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000,
+                    limit: 8192,
                     name: '[path][name].[hash:8].[ext]',
+                    outputPath: 'assets/',
+                    publicPath: '/assets/',
+                    esModule: false,
                 },
             },
             {
@@ -56,6 +59,11 @@ const config: Configuration = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../../public/index.html'),
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: '../../public/assets', to: 'assets' }, // 将 public 文件夹复制到 dist/public 目录下
+            ],
         }),
     ]
 };

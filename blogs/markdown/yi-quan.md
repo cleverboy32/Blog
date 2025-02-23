@@ -17,7 +17,8 @@ interface User {
 ```
 
 2. 主要区别
-![type 和 interface 的区别](../../public/assets/type-interface.jpg)
+
+<img src="assets/type-interface.jpg" alt="type 和 interface 的区别" width="80%">
 
 
 **总结**
