@@ -35,7 +35,7 @@ const config: Configuration = {
                 loader: 'url-loader',
                 options: {
                     limit: 8192,
-                    name: '[path][name].[hash:8].[ext]',
+                    name: '[name].[ext]',
                     outputPath: 'assets/',
                     publicPath: '/assets/',
                     esModule: false,
@@ -55,6 +55,9 @@ const config: Configuration = {
     devServer: {
         static: './dist',
         open: true,
+        client: {
+            logging: 'verbose', // 输出详细日志
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
