@@ -37,7 +37,7 @@ const config: Configuration = {
                     limit: 8192,
                     name: '[name].[ext]',
                     outputPath: 'assets/',
-                    publicPath: '/assets/',
+                    publicPath: 'assets/',
                     esModule: false,
                 },
             },
