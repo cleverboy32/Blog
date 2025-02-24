@@ -122,7 +122,7 @@ renderer.list = function (this, token) {
 // };
 
 renderer.code = (code: Tokens.Code) => {
-    return `<pre><code class="hljs" style="word-break: break-word; white-space: pre-line">${code.text}</code></pre>`;
+    return `<pre><code class="hljs">${code.text}</code></pre>`;
 };
 
 const marked = new Marked(options);
