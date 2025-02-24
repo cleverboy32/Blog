@@ -17,11 +17,12 @@
     "url": "git+https://github.com/cleverboy32/cleverboyBlog.git"
   },
   "keywords": [
-    "write",
-    "your",
-    "blog",
-    "by",
-    "github"
+    "blogTemplate",
+    "markdown blog",
+    "vue write blog",
+    "react write blog",
+    "markdown transform to pdf",
+    "personal website"
   ],
   "author": "wuyunzhu",
   "license": "MIT",
