@@ -57,6 +57,10 @@
         {
             "name": "字节外部-面试",
             "path": "yi-quan"
+        },
+        {
+            "name": "shareCreator-面试",
+            "path": "share-creator"
         }
     ]
 }]
