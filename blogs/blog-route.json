@@ -61,6 +61,10 @@
         {
             "name": "shareCreator-面试",
             "path": "share-creator"
+        },
+        {
+            "name": "code test",
+            "path": "w-ermian"
         }
     ]
 }]
