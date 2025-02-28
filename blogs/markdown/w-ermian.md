@@ -286,6 +286,14 @@ class RequestClient {
       body: JSON.stringify(data)
     });
   }
+
+  put(url, data, config = {}) {
+    return this.request({ ...config, url, method: 'PUT', body: JSON.stringify(data) });
+  }
+
+  delete(url, config = {}) {
+    return this.request({ ...config, url, method: 'DELETE' });
+  }
 }
 
 // Hook implementation
