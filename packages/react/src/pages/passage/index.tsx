@@ -1,5 +1,6 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import PageHeader from 'components/header';
+
 
 import RouterConfig from 'blogs/blog-route.json';
 import React from "react";
@@ -7,6 +8,9 @@ import React from "react";
 import './index.scss'
 
 const Passage = () => {
+
+    const { pathname } = useLocation()
+
     return (
         <div className="passage">
             <PageHeader />
@@ -17,7 +21,7 @@ const Passage = () => {
                             <ul key={index}>
                                 {
                                     item.children.map((blog) => (
-                                        <div className="nav__item__title" key={blog.name}>
+                                        <div className={`nav__item__title ${pathname === `/passage/${blog.path}` ? 'active' : ''}`} key={blog.name} >
                                             <Link to={blog.path} >{blog.name}</Link>
                                         </div>
                                     ))

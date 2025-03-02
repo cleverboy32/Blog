@@ -29,6 +29,11 @@
             overflow-y: auto;
             flex-shrink: 0;
         }
+
+        .active {
+            background: #8c5d2c45;
+            color: #fff;
+        }
     }
 
     .nav__item__title {

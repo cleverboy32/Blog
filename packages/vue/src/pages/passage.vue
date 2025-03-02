@@ -13,7 +13,7 @@
             :to="nav.path + '/' + item.path"
             class="docs-trans page-docs__side__item"
           >
-            <div class="nav__item__title">
+            <div class="nav__item__title" :class="{'active': route.path === nav.path + '/' + item.path }" >
               {{ item.name }}
             </div>
           </router-link>
@@ -29,10 +29,16 @@
 import PageHeader from 'components/header.vue';
 import RouterConfig from 'blogs/blog-route.json';
 import { defineComponent } from 'vue';
-
+import { useRoute } from 'vue-router';
 export default defineComponent({
     components: {
         PageHeader
+    },
+    setup() {
+        const route = useRoute();
+        return {
+            route
+        }
     },
     data () {
         return {
@@ -73,6 +79,10 @@ export default defineComponent({
         position: fixed;
         left: 0;
         width: 300px;
+    }
+
+    .active {
+        background: #8c5d2c45;
     }
 
     .nav__item__title {
