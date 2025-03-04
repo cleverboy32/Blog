@@ -137,6 +137,7 @@ export default defineComponent({
         border-left: 5px solid #8c5d2c;
         text-align: left;
         min-height: 100%;
+        flex: 1;
 
         pre {
             background-color: #8db49134;
