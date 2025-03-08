@@ -6,7 +6,7 @@ import Play from 'pages/markdownToPdf';
 import { marked } from 'utils/markdown';
 
 
-import { createHashRouter, RouteObject } from 'react-router-dom';
+import { createHashRouter, Navigate, RouteObject } from 'react-router-dom';
 
 const children: RouteObject[] = [];
 
@@ -27,8 +27,8 @@ for (const item of routerMap) {
         }
 
         children.push({
-            path: '',
-            lazy: children[0].lazy,
+            index: true,
+            element: <Navigate to={item.children[0].path} replace />,
         });
     }
 }

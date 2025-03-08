@@ -1,7 +1,7 @@
 import Index from 'pages/index.vue';
 import Passage from 'pages/passage.vue'
 import routerMap from 'blogs/blog-route.json';
-import type { RouteRecordRaw, RouteRecordSingleView } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 
 
 const routers: RouteRecordRaw[] = [{
@@ -11,7 +11,7 @@ const routers: RouteRecordRaw[] = [{
 }];
 
 for (const item of routerMap) {
-    const children: RouteRecordSingleView[] = [];
+    const children: RouteRecordRaw[] = [];
 
     if (item.children) {
         for (const child of item.children) {
@@ -26,7 +26,7 @@ for (const item of routerMap) {
 
         children.push({
             path: '',
-            component: children[0].component,
+            redirect: '/passage/' +item.children[0].path
         });
     }
 
