@@ -19,7 +19,7 @@ const options = markedHighlight({
 const renderer = { } as RendererObject;
 const extendRenderer = new Renderer();
 
-console.log(extendRenderer.blockquote);
+console.log(extendRenderer.heading);
 
 renderer.blockquote = function (text) {
 
@@ -40,8 +40,8 @@ renderer.blockquote = function (text) {
 // };
 
 renderer.heading = function (this, heading) {
-    const { text, depth } = heading;
-    return `<h${depth} class="marked-heading">${text}</h${depth}>`;
+    const { depth, tokens } = heading;
+    return `<h${depth} class="marked-heading">${this.parser.parseInline(tokens)}</h${depth}>`;
 };
 
 renderer.hr = function () {
