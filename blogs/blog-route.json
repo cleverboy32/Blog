@@ -63,12 +63,17 @@
             "path": "share-creator"
         },
         {
+            "name": "tb interview",
+            "path": "w-tb"
+        },
+        {
             "name": "code test",
             "path": "w-ermian"
         },
         {
-            "name": "tb interview",
-            "path": "w-tb"
+            "name": "code third",
+            "path": "w-third"
+
         },
         {
             "name": "Saas 介绍",
